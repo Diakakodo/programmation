@@ -1,0 +1,67 @@
+package tp4_1;
+
+public class ChaineCryptee {
+	public String lachaine;
+	public int decalage;
+	
+	public ChaineCryptee(String lachaine, int decalage){
+		this.lachaine = lachaine;
+		this.decalage= decalage;
+	}
+	
+	private static char decaleCaractere(char c, int decalage){
+		return (c<'A' || c>'z')?c:(char)(((c-'A'+decalage)%26)+'A');
+	}
+		
+	public String decrypte(){
+		  String lachaineclaire = "";
+	      int i;
+	      char c;
+	      for(i=0;i<lachaine.length();i++){
+	    	  c=decaleCaractere(lachaine.charAt(i), - decalage); 
+	    	  lachaineclaire += c;}
+	      return lachaineclaire;
+	}
+	
+	
+	public String lachainechiffree;
+	
+	public String crypte(){
+		if (lachaine == null) { 
+			lachaine = "A"; 
+			}
+        
+        String lachainechiffree = "";
+        int i;
+        char c;
+        for(i=0;i<lachaine.length();i++)
+           { c=decaleCaractere(lachaine.charAt(i),decalage); 
+           lachainechiffree += c;}
+        return lachainechiffree;
+	}
+	
+    public static ChaineCryptee FromCrypted(String crypte, int decalage) { 
+	
+	    int i;
+	    String ch = "";
+	    char c;
+	    for(i=0;i<crypte.length();i++)
+	       { c=decaleCaractere(crypte.charAt(i), - decalage ); 
+	         ch += c;}
+	    ChaineCryptee ch1 = new ChaineCryptee(ch, decalage);
+	    return ch1;
+    }
+
+	public static ChaineCryptee FromDecrypted(String enclair, int decalage) {
+	    ChaineCryptee ch = new ChaineCryptee(enclair, decalage);
+	    return ch;
+	}
+	 
+	public static void main(String[] args){
+	
+		ChaineCryptee a=new ChaineCryptee("DEF",3);
+		System.out.println(a.decrypte());
+		System.out.println(a.crypte());
+	}
+
+}
