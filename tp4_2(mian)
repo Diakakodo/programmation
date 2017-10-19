@@ -1,0 +1,18 @@
+package tp4_2;
+
+public class Main {
+	public static void main(String[] args) {
+		Serveur s = new Serveur();
+		Client c1 = new Client("LI_HONGYU");
+		Client c2 = new Client("HAN_JINGHUI");
+		Client c3 = new Client("LI_FENGQUAN");
+		if(c1.seConnecter(s))
+			s.connecter(c1);
+		if(c2.seConnecter(s))
+			s.connecter(c2);
+		if(c3.seConnecter(s))
+			s.connecter(c3);
+		c3.envoyer("Bonjour");
+	}
+
+}
