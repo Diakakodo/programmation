@@ -1,0 +1,21 @@
+package tp4_2;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Serveur {
+	public List<Client> clients;
+	
+	public Serveur(){
+		clients = new ArrayList<Client>();
+	}
+	
+	public boolean connecter(Client clt){
+		clients.add(clt);
+		return true;
+	}
+	
+	public void diffuser(String message){
+		for(Client clt: clients)
+			clt.recevoir(message);
+	}
+}
