@@ -1,0 +1,24 @@
+package tp4_2;
+
+public class Client {
+	public String nom;
+	
+	public Serveur s;
+	
+	public Client(String nom){
+		this.nom=nom;
+	}
+	
+	public boolean seConnecter(Serveur s){
+		this.s=s;
+		return true;
+	}
+	
+	public void envoyer(String msg){
+		s.diffuser(msg);
+	}
+	
+	public void recevoir(String msg){
+		System.out.println(nom+" : "+ msg);
+	}
+}
